@@ -9,14 +9,18 @@ import * as React from "react";
 
 import BaseExample from "@blueprintjs/core/examples/common/baseExample";
 
-import { Cell, Column, Table } from "../src";
+import { Cell, Column, ColumnLoading, Table } from "../src";
 
 export class TableDollarExample extends BaseExample<{}> {
     public render() {
         const renderCell = (rowIndex: number) => <Cell>{`$${(rowIndex * 10).toFixed(2)}`}</Cell>;
         return (
             <Table numRows={10}>
-                <Column name="Dollars" renderCell={renderCell}/>
+                <Column
+                    name="Dollars"
+                    loadingOptions={new Set([ ColumnLoading.HEADER_LOADING ])}
+                    renderCell={renderCell}
+                />
             </Table>
         );
     }
